@@ -26,7 +26,11 @@ warmStrategyCache({
 });
 
 registerRoute(
-  (({ request }) => request.mode === 'navigate', pageCache),
+  (({ request }) => 
+  request.destination === 'style' ||
+      // JavaScript
+  request.destination === 'script' ||
+  request.mode === 'navigate', pageCache),
 
 new StaleWhileRevalidate({
  
